@@ -5,6 +5,10 @@
   "repository": "git@github.com:NigelEarle/Angular-Todo.git",
   "author": "nwre87 <nwre87@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "lint": "eslint src"
+  },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
     "babel-core": "^6.24.1",
@@ -16,6 +20,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
+    "ng-annotate-loader": "^0.2.0",
     "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
@@ -24,5 +29,7 @@
     "webpack-dev-server": "^2.4.3",
     "webpack-hot-middleware": "^2.18.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "express": "^4.15.2"
+  }
 }

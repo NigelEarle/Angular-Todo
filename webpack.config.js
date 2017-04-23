@@ -1,14 +1,32 @@
-const webpack = require('webpack');
+// const webpack = require('webpack');
 const path = require('path');
 
+const nodeModules = path.join(__dirname, 'node_modules');
+
 const config = {
-  context: path.resolve(__dirname, 'src'),
   devtool: 'source-map',
-  entry: {},
-  output: {},
+  entry: [
+    'webpack-hot-middleware/client?reload=true',
+    './src/index.js',
+  ],
+  output: {
+    path: path.resolve(__dirname, '/build/'),
+    publicPath: '/',
+    filename: 'bundle.js',
+  },
   plugins: [],
-  modules: [],
-  resolve: {},
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: nodeModules,
+        loaders: ['babel-loader', 'ng-annotate-loader'],
+      },
+    ],
+  },
+  // resolve: {
+  //   extensions: ['', '.js', '.css', '.scss'],
+  // },
 };
 
-export default config;
+module.exports = config;
