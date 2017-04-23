@@ -20,13 +20,36 @@ const config = {
       {
         test: /\.js$/,
         exclude: nodeModules,
-        loaders: ['babel-loader', 'ng-annotate-loader'],
+        use: [
+          'babel-loader',
+          'ng-annotate-loader',
+        ],
+      },
+      {
+        test: /\.(jpe?g|png|gif)$/,
+        exclude: nodeModules,
+        use: [
+          'url-loader?limit=10000',
+        ],
+      },
+      {
+        test: /\.s?css$/,
+        exclude: nodeModules,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.html$/,
+        exclude: nodeModules,
+        use: [
+          'raw-loader',
+        ],
       },
     ],
   },
-  // resolve: {
-  //   extensions: ['', '.js', '.css', '.scss'],
-  // },
 };
 
 module.exports = config;
