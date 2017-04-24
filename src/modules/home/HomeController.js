@@ -7,7 +7,6 @@ class HomeController {
   }
 }
 
-
 HomeController.$inject = ['$location'];
 
 export default HomeController;
