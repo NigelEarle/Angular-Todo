@@ -1,5 +1,6 @@
-// const webpack = require('webpack');
+const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const nodeModules = path.join(__dirname, 'node_modules');
 
@@ -14,7 +15,14 @@ const config = {
     publicPath: '/',
     filename: 'bundle.js',
   },
-  plugins: [],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      inject: 'body',
+      filename: 'index.html',
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+  ],
   module: {
     rules: [
       {
@@ -24,6 +32,7 @@ const config = {
           'babel-loader',
           'ng-annotate-loader',
         ],
+        include: path.join(__dirname, 'src'),
       },
       {
         test: /\.(jpe?g|png|gif)$/,
@@ -50,6 +59,11 @@ const config = {
       },
     ],
   },
+  // devServer: {
+  //   hot: true,
+  //   inline: true,
+  // },
 };
 
 module.exports = config;
+

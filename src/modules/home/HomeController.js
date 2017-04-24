@@ -1,12 +1,13 @@
 import './Home.scss';
 
 class HomeController {
-  constructor() {
+  constructor($location) {
+    this.$location = $location;
     this.title = 'Angular Todo';
   }
 }
 
 
-HomeController.$inject = [];
+HomeController.$inject = ['$location'];
 
 export default HomeController;

@@ -1,6 +1,5 @@
-/* ngInject */
-
-export default $stateProvider => (
+/* @ngInject */
+const routes = $stateProvider => (
   $stateProvider
     .state('home', {
       url: '/',
@@ -9,3 +8,5 @@ export default $stateProvider => (
       controllerAs: 'home',
     })
 );
+
+export default ['$stateProvider', routes];
