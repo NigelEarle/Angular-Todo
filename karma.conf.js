@@ -1,7 +1,12 @@
 // Karma configuration
 // Generated on Mon Apr 24 2017 22:14:27 GMT-1000 (HST)
+const webpack = require('./webpack.config');
 
-module.exports = function(config) {
+const entry = './src/modules/**/*.test.js';
+const preprocessors = {};
+preprocessors[entry] = ['webpack'];
+
+module.exports = function (config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -15,8 +20,10 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      './src/modules/**/*.spec.js',
+      entry,
     ],
+
+    webpack,
 
 
     // list of files to exclude
@@ -26,9 +33,7 @@ module.exports = function(config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-    },
-
+    preprocessors,
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -65,5 +70,12 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity,
+
+    plugins: [
+        require('karma-webpack'),
+        'karma-chai',
+        'karma-mocha',
+        'karma-chrome-launcher',
+    ],
   });
-}
+};
