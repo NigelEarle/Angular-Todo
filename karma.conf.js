@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Mon Apr 24 2017 17:00:22 GMT-1000 (HST)
+// Generated on Mon Apr 24 2017 22:14:27 GMT-1000 (HST)
 
 module.exports = function(config) {
   config.set({
@@ -15,13 +15,13 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      { pattern: './src/modules/**/*.spec.js', included: false },
-      { pattern: './src/modules/**/*.spec.js', included: false },
+      './src/modules/**/*.spec.js',
     ],
 
 
     // list of files to exclude
-    exclude: [],
+    exclude: [
+    ],
 
 
     // preprocess matching files before serving them to the browser
@@ -66,4 +66,4 @@ module.exports = function(config) {
     // how many browser should be started simultaneous
     concurrency: Infinity,
   });
-};
+}
