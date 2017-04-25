@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.route('/tasks')
   .get((req, res) => {
-    console.log('route hit!!');
+    console.log('route hit');
     Task.findAll()
     .then((data) => {
       res.json({ data });
