@@ -1,3 +1,7 @@
 <div class="container">
   <h1>{{home.title}}</h1>
+  <div class="tasks" ng-repeat="task in home.tasks">
+    <h1>{{task.title}}</h1>
+    <h3>{{task.description}}</h3>
+  </div>
 </div>

@@ -1,13 +1,21 @@
 const express = require('express');
 const webpack = require('webpack');
 const path = require('path');
+const bodyParser = require('body-parser');
 const config = require('./webpack.config');
+const db = require('./server/models');
+const tasks = require('./server/routes/task');
 
 const PORT = process.env.PORT || 3001;
 const isDev = process.env.NODE_ENV !== 'production';
 
 const app = express();
 const compiler = webpack(config);
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use('/api', tasks);
 
 if (isDev) {
   /* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
@@ -28,4 +36,7 @@ if (isDev) {
   app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'src', 'index.html')));
 }
 
-app.listen(PORT, () => console.log(`listening on port: ${PORT}`));
+app.listen(PORT, () => {
+  db.sequelize.sync();
+  console.log(`listening on port: ${PORT}`);
+});
