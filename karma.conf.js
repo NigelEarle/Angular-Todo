@@ -1,6 +1,6 @@
 // Karma configuration
 // Generated on Mon Apr 24 2017 22:14:27 GMT-1000 (HST)
-const webpack = require('./webpack.config');
+const webpackConfig = require('./webpack.config');
 
 const entry = './src/modules/**/*.test.js';
 const preprocessors = {};
@@ -20,10 +20,10 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      entry,
+      './src/tests.webpack.js',
     ],
 
-    webpack,
+    webpack: webpackConfig,
 
 
     // list of files to exclude
@@ -33,7 +33,9 @@ module.exports = function (config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors,
+    preprocessors: {
+      './src/tests.webpack.js': ['webpack', 'sourcemap'],
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -72,10 +74,10 @@ module.exports = function (config) {
     concurrency: Infinity,
 
     plugins: [
-        require('karma-webpack'),
-        'karma-chai',
-        'karma-mocha',
-        'karma-chrome-launcher',
+      require('karma-webpack'),
+      'karma-chai',
+      'karma-mocha',
+      'karma-chrome-launcher',
     ],
   });
 };

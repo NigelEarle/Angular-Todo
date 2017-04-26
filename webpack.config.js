@@ -59,10 +59,6 @@ const config = {
       },
     ],
   },
-  // devServer: {
-  //   hot: true,
-  //   inline: true,
-  // },
 };
 
 module.exports = config;

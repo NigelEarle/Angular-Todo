@@ -5,6 +5,7 @@ import routes from './routes';
 import HomeController from './HomeController';
 import HomeService from './HomeService';
 
+/* @ngInject */
 export default angular.module('home', [uirouter])
   .config(routes)
   .service('HomeService', HomeService)
