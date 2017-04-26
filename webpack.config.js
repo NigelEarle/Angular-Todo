@@ -4,25 +4,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const nodeModules = path.join(__dirname, 'node_modules');
 
+const isTest = process.env.NODE_ENV === 'test';
+
 const config = {
-  devtool: 'source-map',
-  entry: [
+  devtool: isTest ? 'inline-source-map' : 'source-map',
+  entry: isTest ? null : [
     'webpack-hot-middleware/client?reload=true',
     './src/index.js',
   ],
-  output: {
+  output: isTest ? {} : {
     path: path.resolve(__dirname, '/build/'),
     publicPath: '/',
     filename: 'bundle.js',
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      inject: 'body',
-      filename: 'index.html',
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-  ],
+  plugins: [],
   module: {
     rules: [
       {
@@ -60,6 +55,32 @@ const config = {
     ],
   },
 };
+
+if (isTest) {
+  config.module.rules.push({
+    enforce: 'pre',
+    test: /\.js$/,
+    exclude: [
+      nodeModules,
+      /\.spec.js$/,
+    ],
+    loader: 'istanbul-instrumenter-loader',
+    query: {
+      esModules: true,
+    },
+  });
+}
+
+if (!isTest) {
+  config.plugins.push(
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      inject: 'body',
+      filename: 'index.html',
+    }),
+    new webpack.HotModuleReplacementPlugin()
+  );
+}
 
 module.exports = config;
 

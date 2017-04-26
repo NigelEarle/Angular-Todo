@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node server.js",
-    "test": "export NODE_ENV=test && ./node_modules/karma/bin/karma start",
+    "test": "export NODE_ENV=test && ./node_modules/karma/bin/karma start --auto-watch --no-single-run",
     "lint": "eslint src"
   },
   "devDependencies": {
@@ -23,6 +23,7 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "html-webpack-plugin": "^2.28.0",
+    "istanbul-instrumenter-loader": "^2.0.0",
     "jasmine-core": "^2.6.0",
     "karma": "^1.6.0",
     "karma-chai": "^0.1.0",
