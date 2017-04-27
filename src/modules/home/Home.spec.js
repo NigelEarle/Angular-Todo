@@ -2,18 +2,18 @@
 import home from './index';
 
 describe('Home', () => {
-  describe('HomeController', () => {
-    let controller;
-    beforeEach(() => {
-      angular.mock.module(home);
-      angular.mock.inject(($controller) => {
-        controller = $controller('HomeController', {})
-      })
+  let $controller;
+  beforeEach(() => {
+    angular.mock.module(home);
+    angular.mock.inject(function (_$controller_) {
+      $controller = _$controller_;
     })
+  })
 
-    it('should be tested', () => {
-      expect(controller.title).to.equal('Angular Todo');
-    });
+  it('should be tested', () => {
+    let controller;
+    controller = $controller('HomeController')
+    expect(controller.title).to.equal('Angular Todo');
   });
 });
 

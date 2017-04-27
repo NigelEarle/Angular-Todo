@@ -2,10 +2,6 @@
 // Generated on Mon Apr 24 2017 22:14:27 GMT-1000 (HST)
 const webpackConfig = require('./webpack.config');
 
-const entry = './src/modules/**/*.test.js';
-const preprocessors = {};
-preprocessors[entry] = ['webpack'];
-
 module.exports = function (config) {
   config.set({
 
