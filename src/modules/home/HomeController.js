@@ -1,14 +1,18 @@
 import './Home.scss';
 /* @ngInject */
 class HomeController {
-  constructor($location, tasks) {
+  constructor($location, HomeService) {
     this.$location = $location;
     this.err = null;
-    this.tasks = tasks;
+    this.service = HomeService;
     this.title = 'Angular Todo';
+  }
+
+  attach() {
+
   }
 }
 
-HomeController.$inject = ['$location', 'tasks'];
+HomeController.$inject = ['$location', 'HomeService'];
 
 export default HomeController;
