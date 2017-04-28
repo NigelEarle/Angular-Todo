@@ -1,4 +1,3 @@
-
 class HomeService {
   constructor($http) {
     this.$http = $http;

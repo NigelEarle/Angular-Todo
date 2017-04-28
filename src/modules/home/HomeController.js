@@ -7,10 +7,6 @@ class HomeController {
     this.service = HomeService;
     this.title = 'Angular Todo';
   }
-
-  attach() {
-
-  }
 }
 
 HomeController.$inject = ['$location', 'HomeService'];
