@@ -1,6 +1,6 @@
 <div class="container">
-  <h1>{{home.title}}(coming from home controller)</h1>
   <div class="tasks" ng-repeat="task in home.tasks">
+    <h2>{{task.title}}</h2>
+    <p>{{task.description}}</p>
   </div>
-  <tasks data="task"></tasks>
 </div>

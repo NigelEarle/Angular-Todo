@@ -5,7 +5,16 @@ class HomeController {
     this.$location = $location;
     this.err = null;
     this.service = HomeService;
-    this.title = 'Angular Todo';
+    this.tasks = [];
+
+    this.service.getTasks()
+    .then((tasks) => {
+      const { data } = tasks.data;
+      this.tasks = data;
+    })
+    .catch((error) => {
+      this.err = error;
+    });
   }
 }
 
