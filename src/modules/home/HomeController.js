@@ -1,8 +1,7 @@
 import './Home.scss';
 /* @ngInject */
 class HomeController {
-  constructor($location, HomeService) {
-    this.$location = $location;
+  constructor(HomeService) {
     this.err = null;
     this.service = HomeService;
     this.tasks = [];
@@ -18,6 +17,6 @@ class HomeController {
   }
 }
 
-HomeController.$inject = ['$location', 'HomeService'];
+HomeController.$inject = ['HomeService'];
 
 export default HomeController;
