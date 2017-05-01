@@ -5,12 +5,16 @@ class HomeController {
     this.err = null;
     this.service = HomeService;
     this.tasks = [];
+    this.task = {
+      title: '',
+      description: '',
+    };
 
     $scope.$watch('home.title', (prev, curr) => {
-
+      this.task.title = curr;
     });
     $scope.$watch('home.description', (prev, curr) => {
-
+      this.task.description = curr;
     });
   }
 
@@ -23,6 +27,12 @@ class HomeController {
     .catch((error) => {
       this.err = error;
     });
+  }
+
+  addTodo() {
+    this.service.postTask(this.task)
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
   }
 }
 
