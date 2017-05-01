@@ -1,11 +1,20 @@
 import './Home.scss';
 /* @ngInject */
 class HomeController {
-  constructor(HomeService) {
+  constructor($scope, HomeService) {
     this.err = null;
     this.service = HomeService;
     this.tasks = [];
 
+    $scope.$watch('home.title', (prev, curr) => {
+
+    });
+    $scope.$watch('home.description', (prev, curr) => {
+
+    });
+  }
+
+  $onInit() {
     this.service.getTasks()
     .then((tasks) => {
       const { data } = tasks.data;
@@ -17,6 +26,6 @@ class HomeController {
   }
 }
 
-HomeController.$inject = ['HomeService'];
+HomeController.$inject = ['$scope', 'HomeService'];
 
 export default HomeController;
