@@ -14,6 +14,10 @@ class HomeService {
       data: task,
     });
   }
+
+  deleteTask(id) {
+    console.log(id);
+  }
 }
 
 HomeService.$inject = ['$http'];

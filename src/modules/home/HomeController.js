@@ -34,6 +34,11 @@ class HomeController {
     .then(data => console.log(data))
     .catch(err => console.log(err));
   }
+
+  deleteTask(id) {
+    this.service.deleteTask(id)
+    // call .then
+  }
 }
 
 HomeController.$inject = ['$scope', 'HomeService'];
