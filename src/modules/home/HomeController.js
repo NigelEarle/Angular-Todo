@@ -6,9 +6,14 @@ class HomeController {
     this.service = HomeService;
     this.tasks = [];
     this.task = {};
+    this.scope = $scope;
   }
 
   $onInit() {
+    this.getAllTasks();
+  }
+
+  getAllTasks() {
     this.service.getTasks()
     .then((tasks) => {
       const { data } = tasks.data;
@@ -25,11 +30,10 @@ class HomeController {
   }
 
   addTodo() {
-    console.log(this.task);
     this.service.postTask(this.task)
     .then((task) => {
       const { data } = task.data;
-      this.task.push(data);
+      this.tasks.push(data);
     })
     .catch((err) => {
       this.err = err;
@@ -40,11 +44,10 @@ class HomeController {
     this.service.deleteTask(id)
     .then((data) => {
       console.log(data);
-      // handle success - remove from display
+      this.getAllTasks();
     })
     .catch((err) => {
-      console.log(err)
-      // display error if
+      console.log(err);
     });
   }
 }
