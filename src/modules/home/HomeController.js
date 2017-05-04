@@ -31,11 +31,12 @@ class HomeController {
 
   addTodo() {
     this.service.postTask(this.task)
-    .then((data) => {
-      // add to tasks array - display
+    .then((task) => {
+      const { data } = task.data;
+      this.task.push(data);
     })
     .catch((err) => {
-      // display error if
+      this.err = err;
     });
   }
 
