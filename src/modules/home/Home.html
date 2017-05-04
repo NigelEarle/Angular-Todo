@@ -5,10 +5,14 @@
     <button type="button" class="Add" ng-click="home.addTodo()">Add</button>
   </div>
   <div class="tasks" ng-repeat="task in home.tasks">
-    <div class="task">
+    <div class="task" ng-click="home.changeToInput()" ng-hide="home.isInput">
       <h2>{{task.title}}</h2>
       <p>{{task.description}}</p>
-      <button class="button" ng-click="home.deleteTask(task.id)"></button>
     </div>
+    <div ng-show="home.isInput" ng-click="home.changeToInput">
+      <input type="text" class="title" value="{{task.title}}" />
+      <input type="text" class="description" value="{{task.description}}"></p>
+    </div>
+    <button class="button" ng-click="home.deleteTask(task.id)"></button>
   </div>
 </div>

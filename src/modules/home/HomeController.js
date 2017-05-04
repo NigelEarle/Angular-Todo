@@ -7,6 +7,7 @@ class HomeController {
     this.tasks = [];
     this.task = {};
     this.scope = $scope;
+    this.isInput = false;
   }
 
   $onInit() {
@@ -40,14 +41,22 @@ class HomeController {
     });
   }
 
+  changeToInput() {
+    console.log('hellooooo');
+    this.isInput = !this.isInput;
+  }
+
+  // updateTodo() {
+
+  // }
+
   deleteTask(id) {
     this.service.deleteTask(id)
     .then((data) => {
-      console.log(data);
       this.getAllTasks();
     })
     .catch((err) => {
-      console.log(err);
+      this.err = err;
     });
   }
 }
