@@ -31,13 +31,22 @@ class HomeController {
 
   addTodo() {
     this.service.postTask(this.task)
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
+    .then((data) => {
+      // add to tasks array - display
+    })
+    .catch((err) => {
+      // display error if
+    });
   }
 
   deleteTask(id) {
     this.service.deleteTask(id)
-    // call .then
+    .then((data) => {
+      // handle success - remove from display
+    })
+    .catch((err) => {
+      // display error if
+    });
   }
 }
 
