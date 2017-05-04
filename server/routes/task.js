@@ -35,4 +35,23 @@ router.route('/tasks')
     });
   });
 
+router.route('/tasks/:id')
+  .delete((req, res) => {
+    const { id } = req.params;
+    Task.destroy({
+      where: {
+        id,
+      },
+    })
+    .then((data) => {
+      console.log(data);
+      res.send('good');
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send('bad');
+    });
+  });
+
+
 module.exports = router;

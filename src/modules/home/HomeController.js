@@ -29,6 +29,10 @@ class HomeController {
     });
   }
 
+  $onChanges(arg) {
+    console.log(arg)
+  }
+
   addTodo() {
     this.service.postTask(this.task)
     .then((task) => {
@@ -43,9 +47,11 @@ class HomeController {
   deleteTask(id) {
     this.service.deleteTask(id)
     .then((data) => {
+      console.log(data);
       // handle success - remove from display
     })
     .catch((err) => {
+      console.log(err)
       // display error if
     });
   }

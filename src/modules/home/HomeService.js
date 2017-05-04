@@ -8,15 +8,22 @@ class HomeService {
   }
 
   postTask(task) {
-    return this.$http({
-      method: 'POST',
-      url: '/api/tasks',
-      data: task,
-    });
+    return this.$http(
+      {
+        method: 'POST',
+        url: '/api/tasks',
+        data: task,
+      },
+    );
   }
 
   deleteTask(id) {
-    console.log(id);
+    return this.$http(
+      {
+        method: 'DELETE',
+        url: `/api/tasks/${id}`,
+      },
+    );
   }
 }
 
