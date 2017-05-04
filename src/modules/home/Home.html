@@ -1,7 +1,7 @@
 <div class="container">
   <div class="newTodo">
-    <input type="text" ng-model="home.title" placeholder="Todo Title">
-    <input type="text" ng-model="home.description" placeholder="Todo Description">
+    <input type="text" ng-model="home.title" ng-change="home.inputChange(home.title, home.description)" placeholder="Todo Title">
+    <input type="text" ng-model="home.description" ng-change="home.inputChange(home.title, home.description)"placeholder="Todo Description">
     <button type="button" class="Add" ng-click="home.addTodo()">Add</button>
   </div>
   <div class="tasks" ng-repeat="task in home.tasks">

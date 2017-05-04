@@ -5,17 +5,7 @@ class HomeController {
     this.err = null;
     this.service = HomeService;
     this.tasks = [];
-    this.task = {
-      title: '',
-      description: '',
-    };
-
-    $scope.$watch('home.title', (prev, curr) => {
-      this.task.title = curr;
-    });
-    $scope.$watch('home.description', (prev, curr) => {
-      this.task.description = curr;
-    });
+    this.task = {};
   }
 
   $onInit() {
@@ -29,11 +19,13 @@ class HomeController {
     });
   }
 
-  $onChanges(arg) {
-    console.log(arg)
+  inputChange(title = '', description = '') {
+    this.task.title = title;
+    this.task.description = description;
   }
 
   addTodo() {
+    console.log(this.task);
     this.service.postTask(this.task)
     .then((task) => {
       const { data } = task.data;
