@@ -11,17 +11,20 @@
     Add
     </button>
   </div>
-  <ul class="tasks" ng-repeat="task in home.tasks">
+  <ul class="tasks"
+    ng-repeat="task in home.tasks"
+    ng-init="isEditing = true"
+  >
     <li class="task"
-      ng-click="home.changeIsEditing()">
-      <h2 ng-if="home.isEditing">{{task.title}}</h2>
+      ng-click="isEditing = !isEditing">
+      <h2 ng-if="isEditing">{{task.title}}</h2>
 
       <!-- show when editting -->
       <input
         type="text"
         ng-blur="home.updateTask($event, task.id)"
         class="title"
-        ng-hide="!home.isEditing"
+        ng-if="!isEditing"
         value="{{task.title}}"
       />
     </li>
