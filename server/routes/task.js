@@ -30,15 +30,19 @@ router.route('/tasks')
 
 router.route('/tasks/:id')
   .put((req, res) => {
-    // const { title } = req.body;
-    res.send('hello');
+    const { title } = req.body;
+    const { id } = req.params;
+    Task.update(
+      { title },
+      { where: { id } }
+    )
+    .then(data => res.json({ data })) // returns 1
+    .catch(err => res.json({ err }));
   })
   .delete((req, res) => {
     const { id } = req.params;
     Task.destroy({
-      where: {
-        id,
-      },
+      where: { id },
     })
     .then((data) => {
       console.log(data);

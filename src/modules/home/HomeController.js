@@ -44,16 +44,19 @@ class HomeController {
     this.isInput = !this.isInput;
   }
 
-  updateTask() {
-    console.log(this.task);
-    // this.service
-    // .updateTask(task)
-    // .then((data) => {
-    //   console.log(data);
-    // })
-    // .catch((err) => {
-    //   console.log(err);
-    // });
+  updateTask(event, taskId) {
+    const { value } = event.target;
+    this.inputChange(value);
+
+    this.service
+    .updateTask(taskId, this.task)
+    .then((data) => {
+      this.changeIsInput();
+      this.getAllTasks();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }
 
   deleteTask(id) {

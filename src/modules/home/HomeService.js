@@ -17,11 +17,11 @@ class HomeService {
     );
   }
 
-  updateTask(task) {
+  updateTask(id, task) {
     return this.$http(
       {
         method: 'PUT',
-        url: `api/tasks/${task.id}`,
+        url: `api/tasks/${id}`,
         data: task,
       },
     );

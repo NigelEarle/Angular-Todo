@@ -19,7 +19,7 @@
     </div>
     <div ng-show="home.isInput" ng-click="home.changeToInput">
       <input type="text"
-        ng-blur="home.updateTask()"
+        ng-blur="home.updateTask($event, task.id)"
         class="title"
         value="{{task.title}}" 
       />
