@@ -7,7 +7,7 @@ class HomeController {
     this.tasks = [];
     this.task = {};
     this.scope = $scope;
-    this.isInput = false;
+    this.isEditing = false;
   }
 
   $onInit() {
@@ -40,8 +40,8 @@ class HomeController {
     });
   }
 
-  changeIsInput() {
-    this.isInput = !this.isInput;
+  changeIsEditing() {
+    this.isEditing = !this.isEditing;
   }
 
   updateTask(event, taskId) {
