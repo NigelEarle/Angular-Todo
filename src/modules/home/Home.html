@@ -1,18 +1,29 @@
 <div class="container">
   <div class="newTodo">
-    <input type="text" ng-model="home.title" ng-change="home.inputChange(home.title, home.description)" placeholder="Todo Title">
-    <input type="text" ng-model="home.description" ng-change="home.inputChange(home.title, home.description)" placeholder="Todo Description">
-    <button type="button" class="Add" ng-click="home.addTodo()">Add</button>
+    <input type="text" 
+      ng-model="home.title"
+      ng-change="home.inputChange(home.title)"
+      placeholder="Todo Title">
+    <button type="button" 
+      class="add"
+      ng-click="home.addTodo()" >
+    Add
+    </button>
   </div>
   <div class="tasks" ng-repeat="task in home.tasks">
-    <div class="task" ng-click="home.changeIsInput()" ng-hide="home.isInput">
+    <div class="task"
+      ng-click="home.changeIsInput()"
+      ng-hide="home.isInput"
+    >
       <h2>{{task.title}}</h2>
-      <p>{{task.description}}</p>
     </div>
     <div ng-show="home.isInput" ng-click="home.changeToInput">
-      <input type="text" class="title" value="{{task.title}}" />
-      <input type="text" class="description" value="{{task.description}}"></p>
+      <input type="text"
+        ng-blur="home.updateTask()"
+        class="title"
+        value="{{task.title}}" 
+      />
     </div>
-    <button class="button" ng-click="home.deleteTask(task.id)"></button>
+    <button class="button" ng-click="home.deleteTask(task.id)">Delete</button>
   </div>
 </div>

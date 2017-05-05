@@ -17,7 +17,7 @@ class HomeService {
     );
   }
 
-  udpateTask(task) {
+  updateTask(task) {
     return this.$http(
       {
         method: 'PUT',

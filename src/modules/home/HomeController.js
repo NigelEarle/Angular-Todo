@@ -25,9 +25,8 @@ class HomeController {
     });
   }
 
-  inputChange(title = '', description = '') {
+  inputChange(title = '') {
     this.task.title = title;
-    this.task.description = description;
   }
 
   addTodo() {
@@ -45,15 +44,16 @@ class HomeController {
     this.isInput = !this.isInput;
   }
 
-  updateTodo(task) {
-    this.service
-    .updateTask(task)
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  updateTask() {
+    console.log(this.task);
+    // this.service
+    // .updateTask(task)
+    // .then((data) => {
+    //   console.log(data);
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // });
   }
 
   deleteTask(id) {

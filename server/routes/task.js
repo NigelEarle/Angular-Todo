@@ -16,15 +16,8 @@ router.route('/tasks')
     });
   })
   .post((req, res) => {
-    const {
-      title,
-      description,
-    } = req.body;
-
-    const payload = {
-      title,
-      description,
-    };
+    const { title } = req.body;
+    const payload = { title };
 
     Task.create(payload)
     .then((data) => {
@@ -36,6 +29,10 @@ router.route('/tasks')
   });
 
 router.route('/tasks/:id')
+  .put((req, res) => {
+    // const { title } = req.body;
+    res.send('hello');
+  })
   .delete((req, res) => {
     const { id } = req.params;
     Task.destroy({
