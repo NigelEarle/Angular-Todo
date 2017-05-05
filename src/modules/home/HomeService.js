@@ -17,6 +17,16 @@ class HomeService {
     );
   }
 
+  udpateTask(task) {
+    return this.$http(
+      {
+        method: 'PUT',
+        url: `api/tasks/${task.id}`,
+        data: task,
+      },
+    );
+  }
+
   deleteTask(id) {
     return this.$http(
       {

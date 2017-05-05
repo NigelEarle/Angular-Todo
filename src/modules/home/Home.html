@@ -5,7 +5,7 @@
     <button type="button" class="Add" ng-click="home.addTodo()">Add</button>
   </div>
   <div class="tasks" ng-repeat="task in home.tasks">
-    <div class="task" ng-click="home.changeToInput()" ng-hide="home.isInput">
+    <div class="task" ng-click="home.changeIsInput()" ng-hide="home.isInput">
       <h2>{{task.title}}</h2>
       <p>{{task.description}}</p>
     </div>
