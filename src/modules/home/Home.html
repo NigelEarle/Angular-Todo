@@ -16,7 +16,7 @@
     ng-init="isEditing = true"
   >
     <li class="task"
-      ng-click="isEditing = !isEditing">
+      ng-dblclick="isEditing = !isEditing">
       <h2 ng-if="isEditing">{{task.title}}</h2>
 
       <!-- show when editting -->

@@ -2,11 +2,11 @@ import './Home.scss';
 /* @ngInject */
 class HomeController {
   constructor($scope, HomeService) {
+    this.scope = $scope;
     this.err = null;
     this.service = HomeService;
     this.tasks = [];
     this.task = {};
-    this.scope = $scope;
     this.isEditing = false;
   }
 
@@ -40,10 +40,6 @@ class HomeController {
     });
   }
 
-  changeIsEditing() {
-    this.isEditing = !this.isEditing;
-  }
-
   updateTask(event, taskId) {
     const { value } = event.target;
     this.inputChange(value);
@@ -51,7 +47,6 @@ class HomeController {
     this.service
     .updateTask(taskId, this.task)
     .then((data) => {
-      this.changeIsInput();
       this.getAllTasks();
     })
     .catch((err) => {
