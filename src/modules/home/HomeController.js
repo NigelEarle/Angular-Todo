@@ -42,8 +42,12 @@ class HomeController {
 
   updateTask(event, taskId) {
     const { value } = event.target;
-    this.inputChange(value);
 
+    if (value === '') {
+      this.deleteTask(taskId);
+    }
+
+    this.inputChange(value);
     this.service
     .updateTask(taskId, this.task)
     .then((data) => {

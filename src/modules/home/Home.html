@@ -26,6 +26,7 @@
         class="title"
         ng-if="!isEditing"
         value="{{task.title}}"
+        autofocus
       />
     </li>
     <button class="button" ng-click="home.deleteTask(task.id)">Delete</button>
