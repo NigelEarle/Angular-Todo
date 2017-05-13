@@ -6,12 +6,15 @@
   align-content: center;
 }
 
-.newTodo {
+.content {
   width: 60%;
   align-self: center;
+}
+
+.newTodo {
   input[type="text"] {
     color: #303030;
-
+    outline: none;
     width: 100%;
     height: 70px;
     font-size: 2.5rem;
@@ -25,4 +28,8 @@
     font-size: 2.5rem;
     opacity: .2;
   }
+}
+
+.tasks {
+  border: 3px solid white;
 }

@@ -1,34 +1,36 @@
 <div class="container">
-  <div class="newTodo">
-    <input type="text" 
-      ng-model="home.title"
-      ng-change="home.inputChange(home.title)"
-      placeholder="Write A Task" />
-    <!-- <button type="button" 
-      class="add"
-      ng-click="home.addTodo()"
+  <div class=content>
+    <div class="newTodo">
+      <input type="text" 
+        ng-model="home.title"
+        ng-change="home.inputChange(home.title)"
+        placeholder="Write A Task" />
+      <button type="button" 
+        class="add"
+        ng-click="home.addTodo()"
+      >
+      Add
+      </button>
+    </div>
+    <ul class="tasks"
+      ng-repeat="task in home.tasks"
+      ng-init="isEditing = true"
     >
-    Add
-    </button> -->
-  </div>
-  <ul class="tasks"
-    ng-repeat="task in home.tasks"
-    ng-init="isEditing = true"
-  >
-    <li class="task"
-      ng-dblclick="isEditing = !isEditing">
-      <h2 ng-if="isEditing">{{task.title}}</h2>
+      <li class="task"
+        ng-dblclick="isEditing = !isEditing">
+        <h2 ng-if="isEditing">{{task.title}}</h2>
 
-      <!-- show when editting -->
-      <input
-        type="text"
-        ng-blur="home.updateTask($event, task.id)"
-        class="title"
-        ng-if="!isEditing"
-        value="{{task.title}}"
-        autofocus
-      />
-    </li>
-    <button class="button" ng-click="home.deleteTask(task.id)">Delete</button>
-  </ul>
+        <!-- show when editting -->
+        <input
+          type="text"
+          ng-blur="home.updateTask($event, task.id)"
+          class="title"
+          ng-if="!isEditing"
+          value="{{task.title}}"
+          autofocus
+        />
+      </li>
+      <button class="button" ng-click="home.deleteTask(task.id)">Delete</button>
+    </ul>
+  </div>
 </div>
