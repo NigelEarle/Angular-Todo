@@ -31,5 +31,15 @@
 }
 
 .tasks {
-  border: 3px solid white;
+  border: 3px solid lightgrey;
+  border-radius: 5px;
+  width: 103%;
+  .task {
+    font-size: 2.3rem;
+    padding: 6px
+  }
+}
+
+.tasks:first-of-type {
+  border-bottom: none;
 }
